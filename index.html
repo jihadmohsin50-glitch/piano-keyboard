@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jihad Piano Keyboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Jihad Piano Keyboard</h1>
+  <p class="tagline">Press <kbd>A S D F G H J K</kbd> to play. No lessons. No judgement.</p>
+
+  <!-- Last note played (bonus: show last note) -->
+  <div class="last" aria-live="polite">Last note: <span id="last-note">none yet</span></div>
+
+  <!-- Sound selector (bonus: change the wave type) -->
+  <label class="sound">Sound:
+    <select id="wave">
+      <option value="sine">Sine (smooth)</option>
+      <option value="triangle">Triangle (soft)</option>
+      <option value="square">Square (retro game)</option>
+      <option value="sawtooth">Sawtooth (buzzy)</option>
+    </select>
+  </label>
+
+  <div class="frame">
+    <!-- The piano: 8 white keys (.key) and 5 black keys (.black-key).
+         Each key remembers its keyboard letter in data-key. -->
+    <div class="piano">
+      <div class="key" data-key="a"><span class="solfege">Do</span><span class="note">C</span><kbd>A</kbd></div>
+      <div class="key" data-key="s"><span class="solfege">Re</span><span class="note">D</span><kbd>S</kbd></div>
+      <div class="key" data-key="d"><span class="solfege">Mi</span><span class="note">E</span><kbd>D</kbd></div>
+      <div class="key" data-key="f"><span class="solfege">Fa</span><span class="note">F</span><kbd>F</kbd></div>
+      <div class="key" data-key="g"><span class="solfege">Sol</span><span class="note">G</span><kbd>G</kbd></div>
+      <div class="key" data-key="h"><span class="solfege">La</span><span class="note">A</span><kbd>H</kbd></div>
+      <div class="key" data-key="j"><span class="solfege">Ti</span><span class="note">B</span><kbd>J</kbd></div>
+      <div class="key" data-key="k"><span class="solfege">Do</span><span class="note">C</span><kbd>K</kbd></div>
+
+      <!-- Black keys sit on top. --pos = the white-key gap they sit on. -->
+      <div class="black-key" data-key="w" style="--pos:1"><span class="note">C#</span><kbd>W</kbd></div>
+      <div class="black-key" data-key="e" style="--pos:2"><span class="note">D#</span><kbd>E</kbd></div>
+      <div class="black-key" data-key="t" style="--pos:4"><span class="note">F#</span><kbd>T</kbd></div>
+      <div class="black-key" data-key="y" style="--pos:5"><span class="note">G#</span><kbd>Y</kbd></div>
+      <div class="black-key" data-key="u" style="--pos:6"><span class="note">A#</span><kbd>U</kbd></div>
+    </div>
+  </div>
+
+  <!-- Song mode (bonus): play the letters in order -->
+  <section class="song">
+    <label>Song mode:
+      <select id="song">
+        <option value="mary">Mary Had a Little Lamb</option>
+        <option value="twinkle">Twinkle Twinkle Little Star</option>
+      </select>
+    </label>
+    <div id="song-letters" aria-label="Song letters"></div>
+    <p id="song-message"></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

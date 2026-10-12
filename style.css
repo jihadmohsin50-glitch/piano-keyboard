@@ -1,0 +1,148 @@
+/* Jihad Piano Keyboard - styles */
+:root {
+  --w: clamp(40px, 10.5vw, 72px); /* width of one white key */
+  --gold: #ffc21a;
+  --pink: #ff4f9a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 1.5rem 1rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  color: #fff4fb;
+  background: linear-gradient(160deg, #2a1055, #0e0a24);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  background: linear-gradient(90deg, var(--pink), var(--gold), #3de0e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline { margin: 0; color: #cdbff0; text-align: center; }
+
+kbd {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  padding: 0 0.4rem;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.last { font-size: 1.4rem; font-weight: 700; }
+#last-note { color: var(--gold); }
+
+select {
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 2px solid var(--pink);
+  background: #1b1030;
+  color: #fff;
+}
+
+/* The wooden frame around the piano */
+.frame {
+  background: #120a24;
+  border-top: 6px solid var(--pink);
+  border-radius: 14px;
+  padding: 18px 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* The piano is a flex row of 8 white keys */
+.piano {
+  position: relative;          /* black keys are positioned inside it */
+  display: flex;
+  width: calc(var(--w) * 8);
+}
+
+.key {
+  width: var(--w);
+  height: 220px;
+  background: linear-gradient(#fff, #ece8f6);
+  border: 1px solid #8f86ad;
+  border-radius: 0 0 8px 8px;
+  color: #3b2f5c;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.black-key {
+  position: absolute;
+  top: 0;
+  left: calc(var(--w) * var(--pos) - var(--w) * 0.3);
+  width: calc(var(--w) * 0.6);
+  height: 130px;
+  z-index: 2;
+  background: linear-gradient(#3a3058, #0a0612);
+  border-radius: 0 0 6px 6px;
+  color: #e6defa;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.solfege { font-weight: 700; }
+.note { font-size: 0.85rem; }
+.key kbd { background: #3b2f5c; color: #fff; margin-top: 4px; }
+
+/* The light-up style: pressed keys change colour and sink a little */
+.key.active {
+  background: linear-gradient(#ffe27a, var(--gold));
+  transform: translateY(3px);
+  box-shadow: 0 0 22px var(--gold);
+}
+.black-key.active {
+  background: linear-gradient(#ff7fba, var(--pink));
+  transform: translateY(3px);
+  box-shadow: 0 0 22px var(--pink);
+}
+
+/* Song mode */
+.song { text-align: center; margin-top: 0.6rem; }
+#song-letters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 0.8rem auto;
+  max-width: 560px;
+}
+#song-letters span {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: 700;
+}
+#song-letters .done { background: #2fbf71; }
+#song-letters .next { background: var(--gold); color: #1b1030; outline: 3px solid #fff; }
+#song-message { min-height: 1.5em; font-weight: 700; color: var(--gold); }

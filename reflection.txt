@@ -1,0 +1,13 @@
+Reflection - Jihad Piano Keyboard
+
+1. What is the difference between keydown and keyup? Why did we need both?
+keydown happens when I press a key down, and keyup happens when I let go. I needed both because the key must light up and play when I press it, and the light must turn off when I release it. With only keydown the key would stay lit forever.
+
+2. What information does the event object e give you? Name two properties you used.
+The event object tells me what happened. I used e.key to find which key was pressed, and e.repeat to know if the key is just repeating because I am holding it, so I can ignore it.
+
+3. Why did we listen on document instead of on each piano key for the keyboard?
+The keyboard is not pressed on the piano keys on the screen, so a key press does not "land" on one of them. The document catches every key press on the page, and then my code decides which piano key matches it using data-key. One listener is also easier than eight.
+
+4. Name one other place on a real website where an event listener is used.
+A "Like" button on social media waits for a click. Another example is a search box that shows suggestions while you type.
